@@ -15,7 +15,9 @@ export class OrderFactory {
   ) {}
   async create(dto: CreateOrderDto): Promise<Order> {
     try {
-      const reseller = await this.resellerRepository.findOne(dto.resellerId);
+      const reseller = await this.resellerRepository.findOneOrFail(
+        dto.resellerId,
+      );
       const order = new Order(dto.code, dto.value, reseller);
       order.apply(new OrderCreatedEvent(order.id));
       return order;

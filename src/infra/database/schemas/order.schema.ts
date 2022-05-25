@@ -12,6 +12,7 @@ export const OrderSchema = new EntitySchema<Order>({
   properties: {
     id: { type: 'uuid', primary: true, onCreate: () => randomUUID() },
     code: { type: 'string', unique: true },
+    status: { type: 'number' },
     value: { columnType: 'decimal(16,2)', type: DecimalType },
     reseller: {
       reference: ReferenceType.MANY_TO_ONE,

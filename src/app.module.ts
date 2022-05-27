@@ -3,8 +3,9 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './infra/database/database.module';
 import { Module } from '@nestjs/common';
-import { OrdersModule } from './orders/orders.module';
-import { ResellersModule } from './resellers/resellers.module';
+import { OrderModule } from './order/order.module';
+import { ResellerModule } from './reseller/reseller.module';
+import { CashbackModule } from './cashback/cashback.module';
 
 @Module({
   imports: [
@@ -13,8 +14,9 @@ import { ResellersModule } from './resellers/resellers.module';
       envFilePath: ['.env.development', '.env.production', '.env.staging'],
     }),
     DatabaseModule,
-    ResellersModule,
-    OrdersModule,
+    ResellerModule,
+    OrderModule,
+    CashbackModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -6,7 +6,7 @@ import { NestFactory } from '@nestjs/core';
 
 function configureSwagger(app) {
   const config = new DocumentBuilder()
-    .setTitle('API Resellers')
+    .setTitle('API Reseller')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);

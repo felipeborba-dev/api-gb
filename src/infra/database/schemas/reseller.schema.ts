@@ -1,5 +1,5 @@
 import { EntitySchema } from '@mikro-orm/core';
-import { Reseller } from '../../../resellers/entities/reseller.entity';
+import { Reseller } from '../../../reseller/entities/reseller.entity';
 import { ResellerRepository } from '../../../infra/repositories/reseller.repository';
 import { randomUUID } from 'crypto';
 

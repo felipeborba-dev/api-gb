@@ -1,7 +1,7 @@
 import { EntitySchema, ReferenceType } from '@mikro-orm/core';
 
 import { DecimalType } from '../types/decimal.type';
-import { Order } from '../../../orders/entities/order.entity';
+import { Order } from '../../../order/entities/order.entity';
 import { OrderRepository } from '../../../infra/repositories/order.repository';
 import { randomUUID } from 'crypto';
 

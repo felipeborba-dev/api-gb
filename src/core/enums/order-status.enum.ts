@@ -1,4 +1,4 @@
 export enum OrderStatus {
-  PENDING = 0,
-  APPROVED = 1,
+  Pending = 0,
+  Approved = 1,
 }

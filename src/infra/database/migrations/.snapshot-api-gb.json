@@ -102,6 +102,70 @@
           "nullable": false,
           "mappedType": "uuid"
         },
+        "value": {
+          "name": "value",
+          "type": "decimal(16,2)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false
+        },
+        "percentage": {
+          "name": "percentage",
+          "type": "decimal(16,2)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        }
+      },
+      "name": "cashback",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "cashback_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {}
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "uuid"
+        },
         "code": {
           "name": "code",
           "type": "varchar(255)",
@@ -135,6 +199,15 @@
           "autoincrement": false,
           "primary": false,
           "nullable": false,
+          "mappedType": "uuid"
+        },
+        "cashback_id": {
+          "name": "cashback_id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
           "mappedType": "uuid"
         },
         "created_at": {
@@ -171,6 +244,15 @@
           "unique": true
         },
         {
+          "columnNames": [
+            "cashback_id"
+          ],
+          "composite": false,
+          "keyName": "order_cashback_id_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
           "keyName": "order_pkey",
           "columnNames": [
             "id"
@@ -192,6 +274,19 @@
             "id"
           ],
           "referencedTableName": "public.reseller",
+          "updateRule": "cascade"
+        },
+        "order_cashback_id_foreign": {
+          "constraintName": "order_cashback_id_foreign",
+          "columnNames": [
+            "cashback_id"
+          ],
+          "localTableName": "public.order",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.cashback",
+          "deleteRule": "set null",
           "updateRule": "cascade"
         }
       }

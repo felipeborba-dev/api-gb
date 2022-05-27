@@ -18,6 +18,11 @@ export const OrderSchema = new EntitySchema<Order>({
       reference: ReferenceType.MANY_TO_ONE,
       entity: 'Reseller',
     },
+    cashback: {
+      reference: ReferenceType.ONE_TO_ONE,
+      entity: 'Cashback',
+      nullable: true,
+    },
     createdAt: { type: Date, onCreate: () => new Date() },
     updatedAt: {
       type: Date,

@@ -1,10 +1,16 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 
-import { GenerateCashBackCommand } from './generate-cashback.command';
+import { CashbackService } from './../../services/cashback.service';
+import { GenerateCashbackCommand } from './generate-cashback.command';
 
-@CommandHandler(GenerateCashBackCommand)
+@CommandHandler(GenerateCashbackCommand)
 export class GenerateCashBackCommandHandler implements ICommandHandler {
-  execute(command: GenerateCashBackCommand): Promise<any> {
-    throw new Error('Method not implemented.');
+  constructor(private readonly cashbackService: CashbackService) {}
+  async execute(command: GenerateCashbackCommand): Promise<void> {
+    try {
+      await this.cashbackService.generateCashback(command.orderId);
+    } catch (error) {
+      throw error;
+    }
   }
 }

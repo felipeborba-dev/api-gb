@@ -1,4 +1,4 @@
-import { Aggregate } from '../../core/entities/base.entity';
+import { Aggregate } from '../../core/entities/base.aggregate';
 import { EntityRepository } from '@mikro-orm/core';
 import { IBaseRepository } from '../../core/repositories/base.repository';
 export abstract class BaseRepository<T extends Aggregate>

@@ -1,3 +1,4 @@
+import { AuthenticationSchema } from './schemas/authentication.schema';
 import { CashbackSchema } from './schemas/cashback.schema';
 import { ConfigModule } from '@nestjs/config';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
@@ -16,7 +17,12 @@ import { ResellerSchema } from './schemas/reseller.schema';
       ],
     }),
     MikroOrmModule.forRoot({
-      entities: [CashbackSchema, ResellerSchema, OrderSchema],
+      entities: [
+        CashbackSchema,
+        ResellerSchema,
+        OrderSchema,
+        AuthenticationSchema,
+      ],
       type: 'postgresql',
       baseDir: process.cwd(),
       clientUrl: process.env.DB_URL,

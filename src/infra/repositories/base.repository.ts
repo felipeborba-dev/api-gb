@@ -10,7 +10,7 @@ export abstract class BaseRepository<T extends Aggregate>
       await this.persistAndFlush(aggregate);
       return aggregate;
     } catch (error) {
-      throw error;
+      throw Error(error?.detail);
     }
   }
 }

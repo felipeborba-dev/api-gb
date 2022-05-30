@@ -10,4 +10,10 @@ export class CreateResellerDto {
   @IsNotEmpty()
   @MaxLength(100)
   lastName: string;
+  @IsNotEmpty()
+  @MaxLength(16)
+  password: string;
+  @IsNotEmpty()
+  @MaxLength(120)
+  email: string;
 }

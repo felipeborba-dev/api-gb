@@ -38,6 +38,7 @@ export class Order extends Aggregate {
       } else if (this.value < 1500) {
         percentage = 0.2;
       }
+
       return { value: this.value * percentage, percentage };
     } catch (error) {
       throw error;

@@ -20,7 +20,13 @@ export class ResellersController extends BaseController {
   ): Promise<ApiResponse<CreateResellerResponseDto>> {
     return await this.ok(
       this.commandBus.execute<CreateResellerCommand, CreateResellerResponseDto>(
-        new CreateResellerCommand(dto.cpf, dto.firstName, dto.lastName),
+        new CreateResellerCommand(
+          dto.cpf,
+          dto.firstName,
+          dto.lastName,
+          dto.password,
+          dto.email,
+        ),
       ),
     );
   }

@@ -31,11 +31,11 @@ export class Order extends Aggregate {
   calculateCashback(): { percentage: number; value: number } {
     try {
       let percentage = 0;
-      if (this.value >= 1000) {
+      if (this.value <= 1000) {
         percentage = 0.1;
-      } else if (this.value < 1000 && this.value >= 1500) {
+      } else if (this.value > 1000 && this.value <= 1500) {
         percentage = 0.15;
-      } else if (this.value < 1500) {
+      } else if (this.value > 1500) {
         percentage = 0.2;
       }
 

@@ -19,6 +19,7 @@ export class OrderFactory {
         dto.resellerId,
       );
       const order = new Order(dto.code, dto.value, reseller);
+      order.approve();
       order.apply(new OrderCreatedEvent(order.id));
       return order;
     } catch (error) {

@@ -5,9 +5,6 @@ import { ResellerCreatedEvent } from '../events/reseller-created/reseller.create
 import { Security } from './../../core/application/security/crypto.security';
 @Injectable()
 export class ResellerFactory {
-  /**
-   *
-   */
   constructor(private readonly securityService: Security) {}
   create(dto: CreateResellerDto): Reseller {
     const reseller = new Reseller(

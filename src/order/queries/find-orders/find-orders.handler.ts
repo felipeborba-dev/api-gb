@@ -25,6 +25,7 @@ export class FindOrdersQueryHandler {
           'value',
           'cashback',
           'reseller',
+          'status',
           { cashback: ['id', 'value', 'percentage'] },
         ],
       },

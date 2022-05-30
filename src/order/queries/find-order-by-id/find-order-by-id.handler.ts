@@ -14,7 +14,7 @@ export class FindOrderByIdQueryHandler {
 
   async execute(query: FindOrderByIdQuery): Promise<Order> {
     return await this.orderRepository.findOneOrFail(
-      { reseller: { id: query.resellerId } },
+      { reseller: { id: query.resellerId }, id: query.orderId },
       {
         populate: ['cashback', 'reseller'] as any,
         fields: [
@@ -24,6 +24,7 @@ export class FindOrderByIdQueryHandler {
           'value',
           'cashback',
           'reseller',
+          'status',
           { cashback: ['id', 'value', 'percentage'] },
           { reseller: ['cpf', 'email', 'firstName', 'lastName', 'status'] },
         ],

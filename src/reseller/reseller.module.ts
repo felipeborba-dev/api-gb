@@ -1,7 +1,7 @@
 import { CqrsModule } from '@nestjs/cqrs';
 import { CreateResellerCommandHandler } from './commands';
-import { EntityManager } from '@mikro-orm/core';
 import { FindClientHandler } from './queries/find-reseller/find-reseller.handler';
+import { InjectRepository } from '../core/util/common/inject-repository.common';
 import { Module } from '@nestjs/common';
 import { RESELLER_REPOSITORY } from './../order/repositories/reseller.repository';
 import { ResellerFactory } from './factories/reseller.factory';
@@ -18,11 +18,7 @@ import { Security } from './../core/application/security/crypto.security';
     FindClientHandler,
     ResellerFactory,
     ResellerService,
-    {
-      provide: RESELLER_REPOSITORY,
-      useFactory: (em: EntityManager) => em.getRepository('Reseller'),
-      inject: [EntityManager],
-    },
+    InjectRepository(RESELLER_REPOSITORY, 'Reseller'),
   ],
 })
 export class ResellerModule {}

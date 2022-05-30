@@ -4,6 +4,14 @@ dotenv.config({
   path: `${process.cwd()}/.env.${process.env.NODE_ENV || 'development'}`,
 });
 
+const testConfig = {
+  entities: ['./dist/infra/database/schemas'],
+  entitiesTs: ['./src/infra/database/schemas'],
+  type: 'sqlite',
+  baseDir: process.cwd(),
+  dbName: 'testDb.db',
+} as Options;
+
 const config = {
   entities: ['./dist/infra/database/schemas'],
   entitiesTs: ['./src/infra/database/schemas'],
@@ -24,4 +32,6 @@ const config = {
   },
 } as Options;
 
-export default config;
+const currentConfig = process.env.NODE_ENV === 'test' ? testConfig : config;
+
+export default currentConfig;

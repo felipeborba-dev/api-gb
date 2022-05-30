@@ -9,9 +9,9 @@ import {
 } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiTags } from '@nestjs/swagger';
-import { JwtAuthGuard } from 'src/core/application/auth/jwt-auth.guard';
-import { ApiResponse } from 'src/core/dto/api.response';
+import { JwtAuthGuard } from '../../core/application/auth/jwt-auth.guard';
 import { BaseController } from '../../core/controllers/base.controller';
+import { ApiResponse } from '../../core/dto/api.response';
 import { CreateResellerCommand } from '../commands/create-reseller.command';
 import { CreateResellerDto } from '../dto/create-reseller.dto';
 import { CreateResellerResponseDto } from '../dto/create-reseller.response';

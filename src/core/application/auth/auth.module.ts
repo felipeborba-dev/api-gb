@@ -3,7 +3,7 @@ import { AuthService } from './auth.service';
 import { AuthenticationRepository } from './repositories/authentication.repository';
 import { ConfigModule } from '@nestjs/config';
 import { CqrsModule } from '@nestjs/cqrs';
-import { EntityManager } from '@mikro-orm/core';
+import { InjectRepository } from '../../../core/util/common/inject-repository.common';
 import { JwtConstants } from './jwt.constants';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './jwt.strategy';
@@ -27,11 +27,7 @@ import { Security } from '../security/crypto.security';
     AuthService,
     Security,
     JwtStrategy,
-    {
-      provide: AuthenticationRepository,
-      useFactory: (em: EntityManager) => em.getRepository('Authentication'),
-      inject: [EntityManager],
-    },
+    InjectRepository(AuthenticationRepository, 'Authentication'),
   ],
   exports: [AuthService],
   controllers: [AuthController],

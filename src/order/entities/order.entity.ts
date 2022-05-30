@@ -39,7 +39,10 @@ export class Order extends Aggregate {
         percentage = 0.2;
       }
 
-      return { value: this.value * percentage, percentage };
+      return {
+        value: Number((this.value * percentage).toFixed(2)),
+        percentage,
+      };
     } catch (error) {
       throw error;
     }
